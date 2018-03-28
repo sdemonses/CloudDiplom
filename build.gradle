@@ -1,0 +1,64 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.2.20'
+        springBootVersion = '2.0.0.RELEASE'
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath "org.jetbrains.kotlin:kotlin-allopen:1.2.30"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'org.jetbrains.kotlin.jvm' version '1.2.30'
+    id 'org.springframework.boot' version '2.0.0.RELEASE'
+}
+
+group 'NURE'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'kotlin'
+    apply plugin: 'application'
+    apply plugin: 'kotlin-spring'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        kotlinVersion = '1.2.20'
+    }
+
+    dependencies {
+        compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+        compile"org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
+        compile"org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.SR3'
+        }
+    }
+}

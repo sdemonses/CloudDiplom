@@ -1,0 +1,6 @@
+rootProject.name = 'Diplom'
+include 'Gateway'
+include 'Routes'
+include 'Eureka'
+include 'Authorization'
+

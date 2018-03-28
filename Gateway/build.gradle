@@ -1,0 +1,5 @@
+mainClassName = 'ua.nure.gateway.GatewayApplication'
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
+}
