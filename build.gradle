@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath "org.jetbrains.kotlin:kotlin-allopen:1.2.30"
     }
 }
@@ -26,8 +27,8 @@ version '1.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'kotlin'
-    apply plugin: 'application'
     apply plugin: 'kotlin-spring'
+    apply plugin: 'application'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
@@ -43,6 +44,7 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
     }
 
     ext {
@@ -51,14 +53,15 @@ subprojects {
 
     dependencies {
         compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
-        compile"org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
-        compile"org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+        compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+        compile"org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+        compile"org.jetbrains.kotlin:kotlin-reflect"
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
 
     dependencyManagement {
         imports {
-            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.SR3'
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.M8'
         }
     }
 }

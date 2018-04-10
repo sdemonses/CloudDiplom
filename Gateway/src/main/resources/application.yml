@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:8765}
+
+spring:
+  application:
+    name: gateway-server
+  datasource:
+    url: jdbc:mysql://192.168.99.100:33306/default?useSSL=false
+    username: default
+    password: default
+
+zuul:
+  routes:
+    authorization:
+      path: /authorization/**
+      sensitiveHeaders:
+      serviceId: authorization-server
+    account:
+      path: /route/**
+      sensitiveHeaders:
+      serviceId: route-service
