@@ -1,15 +1,21 @@
-server:
-  port: ${PORT:9999}
-
 spring:
   application:
-    name: authorization-server
+    name: uaa
 
 security:
   user:
-    name: root
     password: password
   oauth2:
     client:
-      client-id: acme
-      client-secret: secret
+      client-id: demo
+      client-secret: demo
+      scope: read, write
+      auto-approve-scopes: .*
+    authorization:
+      check-token-access: permitAll()
+server:
+  port: 18080
+  context-path: /uaa
+logging:
+  level:
+    org.springframework.security: DEBUG
