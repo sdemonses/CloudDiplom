@@ -28,12 +28,3 @@ zuul:
 
 eureka.client.service-url.defaultZone: http://localhost:8761/eureka/
 
-ribbon:
-  ConnectTimeout: 60000
-  ReadTimeout: 600000
-hystrix:
-    command:
-        default:
-            execution:
-                timeout:
-                    enabled: false

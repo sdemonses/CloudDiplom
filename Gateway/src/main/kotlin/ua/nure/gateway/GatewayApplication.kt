@@ -1,6 +1,7 @@
 package ua.nure.gateway
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoRestTemplateCustomizer
 import org.springframework.boot.runApplication
 import org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor
@@ -21,20 +22,8 @@ import java.util.stream.Collectors
 @SpringBootApplication
 @EnableZuulProxy
 @EnableEurekaClient
-class GatewayApplication {
-    @Bean
-    fun userInfoRestTemplateCustomizer(loadBalancerInterceptor: LoadBalancerInterceptor): UserInfoRestTemplateCustomizer {
-        return UserInfoRestTemplateCustomizer {
-            val interceptors = mutableListOf<ClientHttpRequestInterceptor>()
-            interceptors.add(loadBalancerInterceptor)
-            val accessTokenProviderChain = AccessTokenProviderChain(listOf<OAuth2AccessTokenSupport>(AuthorizationCodeAccessTokenProvider(), ImplicitAccessTokenProvider(),
-                    ResourceOwnerPasswordAccessTokenProvider(), ClientCredentialsAccessTokenProvider()).stream()
-                    .peek { it.setInterceptors(interceptors) }
-                    .collect(Collectors.toList()) as MutableList<out AccessTokenProvider>?)
-            it.setAccessTokenProvider(accessTokenProviderChain)
-        }
-    }
-}
+
+class GatewayApplication
 
 fun main(args: Array<String>) {
     runApplication<GatewayApplication>(*args)

@@ -4,14 +4,11 @@ server:
 spring:
   application:
     name: routes-service
+
 security:
-  user:
-    name: root
-    password: password
   oauth2:
     resource:
-#      loadBalanced: true
-      userInfoUri: http://localhost:9998/user
+      userInfoUri: http://localhost:9000/user
 
 eureka:
   client:
