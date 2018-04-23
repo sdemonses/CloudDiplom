@@ -1,16 +1,15 @@
 server:
   port: 9000
-  context-path: /uaa
+
+spring:
+  application:
+    name: uaa
 
 logging:
   level:
     org.springframework.security: DEBUG
 
 security:
-#  user:
-                ##    name: admin
-                ##    password: admin
-                ##    role: ADMIN
   oauth2:
     client:
       client-id: springDev1

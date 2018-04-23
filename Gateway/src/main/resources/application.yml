@@ -1,7 +1,10 @@
 server:
   port: 9999
   use-forward-headers: true
-spring.application.name: gateway-server
+
+spring:
+  application:
+    name: gateway-server
 
 zuul:
   host:
@@ -10,19 +13,14 @@ zuul:
   add-proxy-headers: true
   ignored-services: "*"
   routes:
-    api:
-      path: /api/**
-      service-id: resource
-      sensitiveHeaders:
-      strip-prefix: false
     uaa:
       path: /uaa/**
       service-id: uaa
       sensitiveHeaders:
       strip-prefix: false
-    client:
-      path: /client/**
-      service-id: client
+    routes:
+      path: /routes/**
+      service-id: routes
       sensitiveHeaders:
       strip-prefix: false
 
