@@ -16,3 +16,9 @@ security:
       client-secret: test
       authorized-grant-types: password.client_credentials,authorization_code,refresh_token
       scope: read,write
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url.defaultZone: http://localhost:8761/eureka/

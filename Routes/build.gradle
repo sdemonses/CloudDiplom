@@ -1,1 +1,6 @@
 mainClassName = 'ua.nure.routes.RoutesApplication'
+
+dependencies{
+    compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+    compile('org.springframework.cloud:spring-cloud-starter-security')
+}

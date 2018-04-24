@@ -1,6 +1,5 @@
 server:
-  port: 9999
-  use-forward-headers: true
+  port: 8080
 
 spring:
   application:
@@ -16,13 +15,13 @@ zuul:
     uaa:
       path: /uaa/**
       service-id: uaa
-      sensitiveHeaders:
-      strip-prefix: false
     routes:
       path: /routes/**
       service-id: routes
-      sensitiveHeaders:
-      strip-prefix: false
 
-eureka.client.service-url.defaultZone: http://localhost:8761/eureka/
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url.defaultZone: http://localhost:8761/eureka/
 
