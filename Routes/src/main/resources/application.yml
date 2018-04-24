@@ -10,10 +10,10 @@ security:
     client:
       clientId: springDev1
       clientSecret: test
-      accessTokenUri: http://localhost:8761/uaa/oauth/token
-      userAuthorizationUri: http://localhost:3000/uaa/oauth/authorize
+      accessTokenUri: http://localhost:9000/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9000/uaa/oauth/authorize
     resource:
-      userInfoUri: http://localhost:8761/uaa/user
+      userInfoUri: http://localhost:9000/uaa/user
       preferTokenInfo: false
 
 eureka:
