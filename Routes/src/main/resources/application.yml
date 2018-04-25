@@ -7,10 +7,17 @@ spring:
 
 security:
   oauth2:
+    client:
+      clientId: springDev1
+      clientSecret: test
+      accessTokenUri: http://localhost:9000/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9000/uaa/oauth/authorize
     resource:
-      userInfoUri: http://localhost:9000/user
+      userInfoUri: http://localhost:9000/uaa/user
+      preferTokenInfo: false
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url.defaultZone: http://localhost:8761/eureka/
